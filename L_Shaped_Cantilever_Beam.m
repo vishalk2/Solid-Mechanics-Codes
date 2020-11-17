@@ -37,3 +37,19 @@ Ixy2 = A2*(y_0 - (t2/2))*(x_0 - (b2+t1)/2);
 Ixy = Ixy1 + Ixy2
 
 %Calculations
+tan_alpha = (Ixy - Ix*cot(phi))/(Iy - Ixy*cot(phi))
+alpha = atan(tan_alpha)
+
+M = P*a*b/L
+Mx = M*sin(phi)
+My = -M*cos(phi)
+
+%Points where Stress is to be calculated
+xA = x_0 - b2;
+yA = y_0;
+xB = x_0;
+yB = y_0 - h;
+
+%Stress in "MPa"
+sigma_A = 1000*Mx*(yA - xA*tan_alpha)/(Ix - Ixy*tan_alpha)
+sigma_B = 1000*Mx*(yB - xB*tan_alpha)/(Ix - Ixy*tan_alpha)
