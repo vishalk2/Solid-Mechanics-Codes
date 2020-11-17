@@ -53,3 +53,32 @@ yB = y_0 - h;
 %Stress in "MPa"
 sigma_A = 1000*Mx*(yA - xA*tan_alpha)/(Ix - Ixy*tan_alpha)
 sigma_B = 1000*Mx*(yB - xB*tan_alpha)/(Ix - Ixy*tan_alpha)
+
+%Method 2 for same problem
+tan_2_theta = -2*Ixy/(Ix-Iy)
+theta_1 = (1/2)*atan(tan_2_theta)
+theta_2 = theta_1 - (pi/2)
+
+%Moments of Inertia about Principal Axes
+IX = Ix*(cos(theta_1)^2) + Iy*(cos(theta_2)^2) - 2*Ixy*sin(theta_1)*cos(theta_1)
+IY = Ix + Iy - IX
+phi_new = phi - theta_1
+
+%Calculations
+tan_alpha_prime = -IX*cot(phi_new)/IY
+alpha_prime = atan(tan_alpha_prime)
+alpha_new = alpha_prime + theta_1
+
+%New Coordinates of points at which stresses are to be found out
+XA = xA*cos(theta_1) + yA*sin(theta_1)
+YA = yA*cos(theta_1) - xA*sin(theta_1)
+XB = xB*cos(theta_1) + yB*sin(theta_1)
+YB = yB*cos(theta_1) - xB*sin(theta_1)
+
+%New Moments
+MX = M*sin(phi_new)
+MY = -M*cos(phi_new)
+
+%Stress in "MPa"
+sigma_A_new = ((MX*YA)/IX) - ((MY*XA)/IY)
+sigma_B_new = ((MX*YB)/IX) - ((MY*XB)/IY)
