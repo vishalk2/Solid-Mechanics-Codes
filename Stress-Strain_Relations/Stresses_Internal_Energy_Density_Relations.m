@@ -1,4 +1,6 @@
 %Stress Strain Relations - U0 (Internal Energy Density)
+clear all; clc
+format long g
 syms e_xx e_yy e_zz e_xy e_yz e_xz
 U0 = 0; %U0 is a function of strain variables
 sigma_xx = diff(U0,e_xx)
