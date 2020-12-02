@@ -1,4 +1,6 @@
 %Stress Strain Relations - C0 (Complementary Internal Energy Density)
+clear all; clc
+format long g
 syms sigma_xx sigma_yy sigma_zz sigma_xy sigma_yz sigma_xz
 C0 = 0; %C0 as a function of stresses
 e_xx = diff(C0,sigma_xx)
