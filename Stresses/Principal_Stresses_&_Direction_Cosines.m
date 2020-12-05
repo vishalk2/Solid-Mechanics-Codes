@@ -24,10 +24,11 @@ s = roots([1 -I1 I2 -I3]);
 syms l m n
 for i=1:3
     disp('Start of iteration')
+    root = s(i)
     eqn1 = l*(sigma_xx - s(i)) + m*sigma_xy + n*sigma_xz == 0;
     eqn2 = l*sigma_xy + m*(sigma_yy - s(i)) + n*sigma_yz == 0;
     eqn3 = l*sigma_xz + m*sigma_yz + n*(sigma_zz - s(i)) == 0;
-    eqn4 = l^2 + m^2 + n^2 == 1
+    eqn4 = l^2 + m^2 + n^2 == 1;
     [L M N] = solve([eqn3 eqn2 eqn4],[l m n]);
     Normal_Vector = [double(L) double(M) double(N)]'
     disp('End of iteration')
