@@ -18,7 +18,8 @@ I3 = det([sigma_xx sigma_xy sigma_xz;...
 sigma_roots = roots([1 -I1 I2 -I3])
 s = roots([1 -I1 I2 -I3]);
 
-
+%Maximum Shear stress
+Tau_max = abs(max(s)-min(s))/2
 
 %Direction cosines
 syms l m n
