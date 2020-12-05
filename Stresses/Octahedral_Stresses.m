@@ -14,14 +14,14 @@ I3 = det([sigma_xx sigma_xy sigma_xz;...
     sigma_xz sigma_yz sigma_zz])
 
 %Octahedral Stresses
-syms sigma_oct tau_oct
-Sigma_oct = sigma_oct == (1/3)*(sigma_xx + sigma_yy + sigma_zz)
-Tau_oct = tau_oct == (1/3)*sqrt((sigma_xx-sigma_yy)^2 + (sigma_yy-sigma_zz)^2 + (sigma_zz-sigma_xx)^2 + 6*(sigma_xy^2 + sigma_yz^2 + sigma_xz^2))
+
+%Otahedral Normal Stress
+Sigma_oct = (1/3)*(sigma_xx + sigma_yy + sigma_zz)
+%Octahedral Shear Stress
+Tau_oct = (1/3)*sqrt((sigma_xx-sigma_yy)^2 + (sigma_yy-sigma_zz)^2 + (sigma_zz-sigma_xx)^2 + 6*(sigma_xy^2 + sigma_yz^2 + sigma_xz^2))
 
 %Mean & Deviator stresses
-syms sigma_m
-Sigma_m = sigma_m == (1/3)*(sigma_xx + sigma_yy + sigma_zz)
-sigma_M = (1/3)*(sigma_xx + sigma_yy + sigma_zz);
+sigma_m = (1/3)*(sigma_xx + sigma_yy + sigma_zz)
 
 %Stress variants for Td
 J1 = 0
@@ -29,8 +29,8 @@ J2 = I2 - (1/3)*(I1^2)
 J3 = I3 - (1/3)*I1*I2 + (2/27)*(I1^3)
 
 %Principal values of deviatoric tensor Td
-S1 = sigma_xx - sigma_M
-S2 = sigma_yy - sigma_M
-S3 = sigma_zz - sigma_M
+S1 = sigma_xx - sigma_m
+S2 = sigma_yy - sigma_m
+S3 = sigma_zz - sigma_m
 
 S1+S2+S3
