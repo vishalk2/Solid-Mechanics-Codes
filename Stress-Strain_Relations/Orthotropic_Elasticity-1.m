@@ -15,16 +15,19 @@ Ex = 0;
 Ey = 0;
 Ez = 0;
 Vxy = 0;
+Vyx = 0;
 Vyz = 0;
+Vzy = 0;
 Vxz = 0;
+Vzx = 0;
 Gxy = 0;
 Gyz = 0;
 Gxz = 0;
 
 %Strains
-e_xx = (sigma_xx/Ex)-(Vxy*sigma_yy/Ey)-(Vxz*sigma_zz/Ez)
-e_yy = (-Vxy*sigma_xx/Ex)+(sigma_yy/Ey)-(Vyz*sigma_zz/Ez)
-e_zz = (-Vxy*sigma_xx/Ex)-(Vyz*sigma_yy/Ey)+(sigma_zz/Ez)
+e_xx = (sigma_xx/Ex)-(Vyx*sigma_yy/Ey)-(Vzx*sigma_zz/Ez)
+e_yy = (-Vxy*sigma_xx/Ex)+(sigma_yy/Ey)-(Vzy*sigma_zz/Ez)
+e_zz = (-Vxz*sigma_xx/Ex)-(Vyz*sigma_yy/Ey)+(sigma_zz/Ez)
 r_xy = sigma_xy/Gxy
 r_yz = sigma_yz/Gyz
 r_xz = sigma_xz/Gxz
