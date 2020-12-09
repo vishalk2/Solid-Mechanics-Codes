@@ -1,0 +1,75 @@
+%Circumferential Stresses in a Curved Beam
+clear all; clc
+format long g
+
+%Rectangle - Part 1
+a1 = 0;
+b1 = 0;
+c1 = 0;
+A1 = b1*(c1-a1)
+Am1 = b1*log(c1/a1)
+R1 = (a1+c1)/2
+
+%Triangle - Part 2
+a2 = 0;
+b2 = 0;
+c2 = 0;
+A2 = (b2/2)*(c2-a2)
+Am2 = (b2*c2*log(c2/a2)/(c2-a2))-b2
+R2 = (2*a2+c2)/3
+
+%Trapezium - Part 3
+b3_1 = 0;
+b3_2 = 0;
+a3 = 0;
+c3 = 0;
+A3 = (b3_1+b3_2)*(c3-a3)/2
+Am3 = ((b3_1*c3-b3_2*a3)*log(c3/a3)/(c3-a3))-b3_1+b3_2
+R3 = (a3*(2*b3_1+b3_2)+c3*(b3_1+2*b3_2))/(3*(b3_1+b3_2))
+
+%Circle - Part 4
+b4 = 0;
+R4 = 0;
+A4 = pi*(b4^2)
+Am4 = 2*pi*(R4-((R4^2-b4^2)^0.5))
+
+%Ellipse - Part 5
+b5 = 0;
+h5 = 0;
+R5 = 0;
+A5 = pi*b5*h5
+Am5 = 2*pi*b5*(R5-((R5^2-h5^2)^0.5))/h5
+
+%Annular Disc - Part 6
+b6_1 = 0;
+b6_2 = 0;
+R6 = 0;
+A6 = pi*(b6_1^2-b6_2^2)
+Am6 = 2*pi*(((R6^2-b6_2^2)^0.5)-((R6^2-b6_1^2)^0.5))
+
+%Annular Ellipse - Part 7
+b7_1 = 0;
+b7_2 = 0;
+h7_1 = 0;
+h7_2 = 0;
+R7 = 0;
+A7 = pi*(b7_1*h7_1-b7_2*h7_2)
+Am7 = 2*pi*((b7_1*R7/h7_1)-(b7_2*R7/h7_2)-(b7_1*((R7^2-h7_1^2)^0.5)/h7_1)+(b7_2*((R7^2-h7_2^2)^0.5)/h7_2))
+
+%Circular arc with center nearer to the center of curvature - Part 8
+a8 = 0;
+b8 = 0;
+theta8 = 0;
+A8 = (b8^2)*theta8-((b8^2)*sin(2*theta8)/2)
+R8 = a8+(4*b8*(sin(theta8)^3)/(3*(2*theta8-sin(2*theta8))))
+if a8>b8
+    Am8 = 2*a8*theta8-2*b8*sin(theta8)-pi*((a8^2-b8^2)^0.5)+2*((a8^2-b8^2)^0.5)*asin((b8+a8*cos(theta8))/(a8+b8*cos(theta8)))
+else
+    Am8 = 2*a8*theta8-2*b8*sin(theta8)+2*((b8^2-a8^2)^0.5)*log((b8+a8*cos(theta8)+sin(theta8)*((b8^2-a8^2)^0.5))/(a8+b8*cos(theta8)))
+end
+
+%Circular arc with center farther from the center of curvature - Part 9
+a9 = 0;
+b9 = 0;
+theta9 = 0;
+
