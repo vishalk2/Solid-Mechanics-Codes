@@ -89,12 +89,6 @@ R10 = a10-(4*h10/(3*pi))
 Am10 = 2*b10+(pi*b10*(a10-((a10^2-h10^2)^0.5))/h10)-((2*b10*((a10^2-h10^2)^0.5)*asin(h10/a10))/h10)
 
 %Calculations
-A = A1+A2+A3+A4+A5+A6+A7+A8+A9+A10
-Am = Am1+Am2+Am3+Am4+Am5+Am6+Am7+Am8+Am9+Am10
-R = (R1*A1+R2*A2+R3*A3+R4*A4+R5*A5+R6*A6+R7*A7+R8*A8+R9*A9+R10*A10)/A
-Rn = A*Mx/(Am*Mx+N*(A-R*Am)) %Distance of Neutral Axis
-
-%Substitute value for "r" for finding
-%Circumferential Stress at that point
-r = 0
-sigma = (N/A)+((Mx*(A-r*Am))/(A*r*(R*Am-A)))
+A
+Am
+R
